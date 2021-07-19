@@ -2,6 +2,7 @@ const dotenv = require('dotenv').config({ path: __dirname + '/.env' })
 const path = require('path')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const ReactRefreshTypeScript = require('react-refresh-typescript')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -38,6 +39,7 @@ const tsConfig = {
         getCustomTransformers: () => ({
           before: isDevelopment ? [ReactRefreshTypeScript()] : [],
         }),
+        transpileOnly: true,
       },
     },
   ].filter(Boolean),
@@ -74,6 +76,7 @@ const minifyConfig = {
 }
 
 module.exports = {
+  context: __dirname, // to automatically find tsconfig.json
   mode: isDevelopment ? 'development' : 'production',
   entry: ['./src/index.tsx'],
   output: {
@@ -96,6 +99,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed),
+      'process.env.NODE_ENV': JSON.stringify(isDevelopment ? 'development' : 'production'),
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -111,15 +115,27 @@ module.exports = {
     }),
     isDevelopment && new webpack.HotModuleReplacementPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
+    isDevelopment &&
+      new ForkTsCheckerWebpackPlugin({
+        eslint: {
+          files: './src/**/*.{ts,tsx,js,jsx}',
+        },
+      }),
   ].filter(Boolean),
   cache: true,
   bail: false,
   devtool: isDevelopment ? 'eval-source-map' : false,
   devServer: {
-    hot: true,
-    noInfo: false,
+    compress: true,
     contentBase: './dist',
     historyApiFallback: true,
+    hot: true,
+    noInfo: false,
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
+    port: 1559,
   },
   target: 'web',
   stats: 'errors-only',
