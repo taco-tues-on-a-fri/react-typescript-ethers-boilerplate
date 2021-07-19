@@ -1,0 +1,138 @@
+{
+  "name": "react-typescript-ethers-boilerplate",
+  "version": "0.1.0",
+  "description": "React TypeScript Ethers Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --hot",
+    "build": "cross-env NODE_ENV=production webpack",
+    "lint": "npm run lint:ts",
+    "lint:ts": "eslint 'src/**/*.{ts,tsx}'",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taco-tues-on-a-fri/react-typescript-boilerplate.git"
+  },
+  "author": "taco-tues-on-a-fri",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "ethers": "^5.4.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-reconciler": "^0.25.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
+    "@types/copy-webpack-plugin": "^6.0.0",
+    "@types/enzyme": "^3.10.5",
+    "@types/html-webpack-plugin": "^3.2.3",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.6.4",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router": "^5.1.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/webpack": "^4.41.22",
+    "@types/webpack-dev-server": "^3.11.0",
+    "@types/webpack-env": "^1.15.2",
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.0.1",
+    "autoprefixer": "^9.8.6",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^6.1.0",
+    "cross-env": "^7.0.2",
+    "css-hot-loader": "^1.4.4",
+    "css-loader": "^4.2.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
+    "enzyme-to-json": "^3.5.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-typescript": "^10.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "file-loader": "^6.1.0",
+    "fork-ts-checker-webpack-plugin": "^4.1.6",
+    "html-loader": "^1.3.0",
+    "html-webpack-plugin": "^5.3.1",
+    "image-webpack-loader": "^6.0.0",
+    "jest": "^26.4.2",
+    "mini-css-extract-plugin": "^0.11.0",
+    "react-dev-utils": "^11.0.4",
+    "react-refresh": "^0.10.0",
+    "react-refresh-typescript": "^2.0.1",
+    "style-loader": "^1.2.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-standard": "^22.0.0",
+    "ts-jest": "^26.3.0",
+    "ts-loader": "^8.0.3",
+    "type-fest": "^0.16.0",
+    "typescript": "^4.0.2",
+    "url-loader": "^4.1.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1",
+      "^@components/(.*)$": "<rootDir>/src/components/$1",
+      "^@lib/(.*)$": "<rootDir>/src/lib/$1",
+      "^@public/(.*)$": "<rootDir>/public/$1",
+      "^@src/(.*)$": "<rootDir>/src/$1",
+      "^@utilities/(.*)$": "<rootDir>/src/lib/utilities/$1",
+      "\\.(css|less|sass|scss)$": "<rootDir>/test-config/StyleMock.js",
+      "\\.(jpg|jpeg|png|gif|ico|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test-config/FileMock.js"
+    },
+    "setupFiles": [
+      "<rootDir>/test-config/index.js",
+      "<rootDir>/test-config/LocalStorageMock.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "\\.(css|less|sass|scss)$": "<rootDir>/test-config/StyleMock.js",
+      "\\.(jpg|jpeg|png|gif|ico|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test-config/FileMock.js"
+    },
+    "verbose": false,
+    "testRegex": ".*\\.(test|spec)\\.(j|tsx?)$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/",
+      "<rootDir>/test-config/"
+    ]
+  }
+}
