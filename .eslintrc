@@ -1,0 +1,111 @@
+{
+  "env": {
+    "browser": true,
+    "jest/globals": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+    "prettier/@typescript-eslint", // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint" /*Enables eslint-plugin-prettier & eslint-config-prettier, displays prettier errors as ESLint errors, must be last in array.*/
+],
+  "ignorePatterns": [
+    "webpack.config.js",
+    "test-config/*"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 6,
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "jest"
+  ],
+  "rules": {
+    "@typescript-eslint/indent": [
+      "off"
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-shadow": [
+      "off"
+    ],
+    "@typescript-eslint/semi": [
+      "error",
+      "never"
+    ],
+    "arrow-body-style": "off",
+    "arrow-parens": [
+      "warn",
+      "as-needed"
+    ],
+    "eol-last": [
+      "warn",
+      "always"
+    ],
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "indent": "off",
+    "key-spacing": [
+      "error",
+      {
+        "afterColon": true,
+        "beforeColon": false
+      }
+    ],
+    "max-len:": ["off", { "comments": 500, "ignoreComments": true }],
+    "no-console": "off",
+    "no-multiple-empty-lines": "off",
+    "no-shadow": "off",
+    "no-tabs": "off",
+    "object-curly-newline": [
+      "off", {
+      "ObjectExpression": "always",
+      "ObjectPattern": { "multiline": true, "minProperties": 3},
+      "ImportDeclaration": "never",
+      "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+  }],
+    "operator-linebreak": [
+      "error",
+      "after",
+      {
+        "overrides": {
+          ":": "before"
+        }
+      }
+    ],
+    "no-return-assign": "off",
+    "padded-blocks": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/display-name": "off",
+    "react/jsx-curly-spacing": [
+      "off",
+      {
+        "spacing": {
+          "objectLiterals": "never"
+        },
+        "when": "always"
+      }
+    ],
+    "react/jsx-filename-extension": "off",
+    "react/jsx-fragments": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "semi": "off",
+    "spaced-comment": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
