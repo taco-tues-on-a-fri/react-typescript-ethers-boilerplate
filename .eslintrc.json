@@ -1,3 +1,4 @@
+// inspiration 01: https://github.com/iamturns/create-exposed-app/blob/master/.eslintrc.js
 {
   "env": {
     "browser": true,
@@ -8,7 +9,8 @@
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    "prettier/@typescript-eslint", // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+    "plugin:promise/recommended",
+    // "plugin:unicorn/recommended",
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint" /*Enables eslint-plugin-prettier & eslint-config-prettier, displays prettier errors as ESLint errors, must be last in array.*/
   ],
@@ -22,11 +24,22 @@
     "project": "tsconfig.json",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "jest"],
+  "plugins": [
+    "@typescript-eslint", 
+    "jest", 
+    "promise"
+    // "unicorn",
+  ],
   "rules": {
     "@typescript-eslint/indent": ["off"],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-shadow": ["off"],
+    // Allow most functions to rely on type inference. If the function is exported, then `@typescript-eslint/explicit-module-boundary-types` will ensure it's typed.
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      { "functions": false, "classes": true, "variables": true, "typedefs": true }
+    ],
     "@typescript-eslint/semi": ["error", "never"],
     "arrow-body-style": "off",
     "arrow-parens": ["warn", "as-needed"],
@@ -46,6 +59,11 @@
     "no-multiple-empty-lines": "off",
     "no-shadow": "off",
     "no-tabs": "off",
+        // Use function hoisting to improve code readability
+        "no-use-before-define": [
+          "error",
+          { "functions": false, "classes": true, "variables": true }
+        ],
     "object-curly-newline": [
       "off",
       {
@@ -86,6 +104,15 @@
     "semi": "off",
     "spaced-comment": "off"
   },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        // Allow `require()`
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
   "settings": {
     "react": {
       "version": "detect"
